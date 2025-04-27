@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Handling</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+    <h1>Error Handling in JavaScript</h1>
+    <input type="number" id="Age" min="1" max="10"><br>
+    <button onclick="handleError()">Enter your age</button>
+    <p id="output"></p>
+    <script>
+      function handleError() {
+        let userInput = parseInt(document.getElementById("Age").value);
+        const output=document.getElementById("output");
+        try {
+            if (userInput === null || userInput === "") {
+                throw new Error("Input cannot be Empty")
+            }
+            if (isNaN(userInput)) {
+                throw new Error("Input cannot be Empty🙅");
+            }
+            if (userInput > 18 ){
+                throw new Error("User is too old 😅");
+            }else if (userInput < 5){
+                throw new Error("User is too young👶")
+            }
+            let number = Number(userInput);
+            let result =  number;
+            document.getElementById("output").innerHTML = "You are old enough to Register😁 your age is:  " + result; 
+        } catch (error) {
+            document.getElementById("output").innerHTML = "Error🚫: " + error.message; 
+        }
+      }  
+    </script>
+    </div>
+</body>
+</html>
